@@ -1,0 +1,291 @@
+﻿{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+        <link rel="icon" href="https://thememakker.com/templates/netropolis/hospital/laravel/public/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        <title>Dashboard - Netropolis App</title>
+        <meta name="description" content="Oero Laravel">
+        <meta name="author" content="Oero Laravel">
+                
+                
+        <link rel="stylesheet" href="{% static 'netropolis_app\assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'netropolis_app\assets\plugins\jvectormap\jquery-jvectormap-2.0.3.min.css' %}">
+        <link rel="stylesheet" href="{% static 'netropolis_app\assets\plugins\morrisjs\morris.min.css' %}">
+                <!-- Custom Css -->
+        <link rel="stylesheet" href="{% static 'netropolis_app\assets\css\blog.css' %}">
+        <link rel="stylesheet" href="{% static 'netropolis_app\assets\css\main.css' %}">
+        <link rel="stylesheet" href="{% static 'netropolis_app\assets\css\color_skins.css' %}">
+            </head>
+        <body class="theme-purple">
+        <!-- Page Loader -->
+        <div class="page-loader-wrapper">
+            <div class="loader">
+                <div class="m-t-30"><img class="zmdi-hc-spin" src="{% static 'netropolis_app\assets\images\logo2.png' %}" width="48" height="48" alt="Netropolis"></div>
+                <p>Please wait...</p>        
+            </div>
+        </div>
+        <!-- Overlay For Sidebars -->
+        <div class="overlay"></div>
+        <nav class="navbar p-l-5 p-r-5">
+        <ul class="nav navbar-nav navbar-left">
+        <li>    
+            <div class="navbar-header"> 
+                <a href="javascript:void(0);" class="bars"></a> 
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'netropolis_app\assets\images\logo2.png' %}" width="30" alt="Netropolis"><span class="m-l-10">Netropolis</span></a>
+            </div>
+        </li>
+        <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>
+        <li class="d-none d-lg-inline-block"><a href="{% url 'events-list' %}" title="Events"><i class="zmdi zmdi-calendar"></i></a></li>
+        <li><a href="{% url 'all-members' %}" title="Members List"><i class="zmdi zmdi-account-box-phone"></i></a></li>
+        <li class="dropdown"> <a href="{% url 'notice-list' %}"><i class="zmdi zmdi-notifications"></i></a></li>
+        <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-flag"></i></a></li>
+        <li class="d-none d-md-inline-block">
+            <div class="input-group">                
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-addon">
+                    <i class="zmdi zmdi-search"></i>
+                </span>
+            </div>
+        </li>        
+        <li class="float-right">
+            <a href="{% url 'logout' %}" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>
+        </li>
+    </ul>
+</nav>        
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">                                                                                                                                        
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#dashboard"><i class="zmdi zmdi-home m-r-5"></i>Netropolis</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane stretchRight active" id="dashboard">
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <div class="user-info">
+                            <div class="image"><a href="{% url 'profile' %}"><img src="{{cid.pic.url}}" alt="User"></a></div>
+                            <div class="detail">
+                                <h4>{{cid.first_name}} {{cid.last_name}}</h4>
+                                <small>{{uid.role}}</small>                        
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="active open"><a href="{% url 'home' %}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>            
+                    <li class=""><a href="{% url 'profile' %}"><i class="zmdi zmdi-calendar-check"></i><span>My Profile</span></a></li>
+                    <li class="">           
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>Society Members</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'all-members' %}">All Members</a></li>
+                            <li class=""><a href="{% url 'add-society-member' %}">Add Members</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>Notice</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'notice-list' %}">All Notice</a></li>
+                            <li class=""><a href="{% url 'add-notice' %}">Add Notice</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-balance-wallet"></i><span>Events</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'events-list' %}">All Events</a></li>
+                            <li class=""><a href="{% url 'add-events' %}">Add Event</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-label-alt"></i><span>Complaints</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'complaints-list' %}">Views Complaints</a></li>
+                        </ul>
+                    </li>     
+                </ul>
+            </div>
+        </div>
+    </div>    
+</aside>
+        <!-- Right Sidebar -->
+<aside id="rightsidebar" class="right-sidebar">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#setting"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#chat"><i class="zmdi zmdi-comments"></i></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane slideRight active" id="setting">
+            <div class="slim_scroll">
+                <div class="card">
+                    <h6>General Settings</h6>
+                    <ul class="setting-list list-unstyled">
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label for="checkbox1">Report Panel Usage</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox2" type="checkbox" checked="">
+                                <label for="checkbox2">Email Redirect</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox3" type="checkbox" checked="">
+                                <label for="checkbox3">Notifications</label>
+                            </div>                        
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox4" type="checkbox" checked="">
+                                <label for="checkbox4">Auto Updates</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>                
+                <div class="card">
+                    <h6>Skins</h6>
+                    <ul class="choose-skin list-unstyled">
+                        <li data-theme="purple" class="active">
+                            <div class="purple"></div>
+                        </li>                   
+                        <li data-theme="blue" class="">
+                            <div class="blue"></div>
+                        </li>
+                        <li data-theme="cyan" class="">
+                            <div class="cyan"></div>                    
+                        </li>
+                        <li data-theme="green" class="">
+                            <div class="green"></div>
+                        </li>
+                        <li data-theme="orange" class="">
+                            <div class="orange"></div>
+                        </li>
+                        <li data-theme="blush" class="">
+                            <div class="blush"></div>                    
+                        </li>
+                    </ul>                    
+                </div>
+                <div class="card">
+                    <h6>Account Settings</h6>
+                    <ul class="setting-list list-unstyled">
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox5" type="checkbox" checked="">
+                                <label for="checkbox5">Offline</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox6" type="checkbox" checked="">
+                                <label for="checkbox6">Location Permission</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card theme-light-dark">
+                    <h6>Left Menu</h6>
+                    <button class="t-light btn btn-default btn-simple btn-round btn-block">Light</button>
+                    <button class="t-dark btn btn-default btn-round btn-block">Dark</button>
+					<button class="m_img_btn btn btn-primary btn-round btn-block">Sidebar Image</button>                    
+                </div>                
+            </div>                
+        </div>       
+        <div class="tab-pane right_chat stretchLeft" id="chat">
+            <div class="slim_scroll">
+                <div class="card">
+                    <div class="search">                        
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>      
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Dashboard <small class="text-muted">Welcome to Netropolis</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home"></i> Netropolis</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="body">
+                                <h3 class="number count-to m-b-0" data-from="0" data-to="{{mcount}}" data-speed="1500" data-fresh-interval="700">{{mcount}} <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                                <p class="text-muted">Society Members Counts</p>
+                                <div class="progress">
+                                    <div class="progress-bar l-blush" role="progressbar" aria-valuenow="{{mcount}}" aria-valuemin="0" aria-valuemax="100" style="width: {{mcount}};"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="body">
+                                <h3 class="number count-to m-b-0" data-from="0" data-to="{{ncount}}" data-speed="2500" data-fresh-interval="100">{{ncount}} <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                                <p class="text-muted">Society Notice</p>
+                                <div class="progress">
+                                    <div class="progress-bar l-green" role="progressbar" aria-valuenow="{{ncount}}" aria-valuemin="0" aria-valuemax="{{ncount}}" style="width: {{ncount}};"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card">
+                            <div class="body">
+                                <h3 class="number count-to m-b-0" data-from="0" data-to="{{ecount}}" data-speed="2500" data-fresh-interval="1000">{{ecount}} <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                                <p class="text-muted">Society Events</p>
+                                <div class="progress">
+                                    <div class="progress-bar l-parpl" role="progressbar" aria-valuenow="{{ecount}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ecount}};"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+{% endblock %}
+                <!-- Scripts -->
+        <script src="{% static 'netropolis_app\assets\bundles\libscripts.bundle.js' %}"></script>    
+        <script src="{% static 'netropolis_app\assets\bundles\vendorscripts.bundle.js' %}"></script>
+
+        <script src="{% static 'netropolis_app\assets\bundles\mainscripts.bundle.js' %}"></script>
+        <script src="{% static 'netropolis_app\assets\bundles\morrisscripts.bundle.js' %}"></script>
+        <script src="{% static 'netropolis_app\assets\bundles\jvectormap.bundle.js' %}"></script>
+        <script src="{% static 'netropolis_app\assets\bundles\knob.bundle.js' %}"></script>
+        <script src="{% static 'netropolis_app\assets\js\pages\index.js' %}"></script>
+				<!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+    </body>
+</html>

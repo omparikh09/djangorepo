@@ -1,0 +1,47 @@
+﻿{% extends "netropolis_app/index.html" %}
+
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Netropolis Events List <small class="text-muted">Welcome to Netropolis</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i> Netropolis</a></li>
+                            <li class="breadcrumb-item">Events</li>
+                            <li class="breadcrumb-item active">Events List</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                <div class="blog-page">
+    <div class="row">
+        <div class="col-md-12 left-box">
+
+            {% for e in eall %}
+                <div class="card single_post">
+                    <div class="body">
+                        <h3 class="m-t-0 m-b-5"><a href="detail.html">{{e.title}}</a></h3>
+                        <ul class="meta">
+                            <li><a href="#"><i class="zmdi zmdi-account col-blue"></i>Posted By: {{e.user_id.role}}</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>Time: {{e.created_at}}</a></li>
+                        </ul>
+                    </div>                     
+                    <div class="body">
+                        <p>{{e.Description}}</p>
+                        <a href="detail.html" title="read more" class="btn btn-round btn-info">Edite</a> 
+                        <a href="" title="read more" class="btn btn-round btn-delete">Delete</a>                       
+                    </div>
+                </div>    
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}

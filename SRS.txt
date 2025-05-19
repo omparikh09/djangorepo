@@ -1,0 +1,50 @@
+Digital Society.
+
+--------------------------
+                A       B       C       D
+
+super Admin
+Chairman 
+Society Member 
+Watchman 
+
+---------------------------------
+chairman : 
+
+        - (in built registration)                                       Done
+        - login                                                         Done        
+        - logout                                                        Done
+        - forgot password (via mail otp)
+        - profile update                                                Done
+        - add society member                                            Done
+        - view all society member                                       Done
+        - manage society member                                         Done
+        - add notice (pic)
+        - can add society events  (pic / video)
+        - can view events request - approve and reject 
+        - can view notice and events and manage 
+        - can view and resolve complaints 
+
+---------------------------------
+Members : 
+        - can login                                                     Done
+        - logout                                                        Done
+        - profile manage                                                Done
+        - forgot password                                               Done
+        - can view notice                                               Done
+        - can view other society member                                 Done
+        - can view chairman detailes                                    
+        - can add post regarding rent / sale                            
+        - can add complaints
+        - can view visitors 
+        - can apply for private event request to chairman
+
+---------------------------------
+watchman : 
+        - can login 
+        - logout 
+        - profile manage 
+        - forgot password
+        - can view all society member 
+        - can add visitor entry 
+        - can view visitor entry 
